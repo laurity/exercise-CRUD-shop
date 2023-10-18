@@ -1,11 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CLOTHING SHOPPING</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
-    
+    <div class="container">
+        <h1>CLOTHING SHOPPING CRUD</h1>
+        <div class="menu">
+            <input type="text" id="product" class="product" placeholder="Busca el producto...">
+            <button type="button" class="search" id="search">Buscar</button>
+            <br />
+            <input type="text" id="name" class="name" placeholder="Nombre">
+            <input type="number" id="amount" class="amount" placeholder="Cantidad">
+            <input type="number" id="price" class="price" placeholder="Precio">
+            <button type="button" class="new" id="new">Crear</button>
+            <button type="button" class="update" id="update">Actualizar</button>
+
+            <table class="table">
+                <th>
+                    <tr>
+                        <td>ID</td>
+                        <td>Nombre</td>
+                        <td>Cantidad</td>
+                        <td>Precio</td>
+                    </tr>
+                </th>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Pantalon</td>
+                        <td>52</td>
+                        <td>12€</td>
+                    </tr>
+                </tbody>
+                <button type="button" class="delete" id="delete">Borrar</button>
+        </div>
+    </div>
+
 </body>
+
 </html>

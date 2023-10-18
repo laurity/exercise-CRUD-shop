@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'AR One Sans', sans-serif;
+        src: url('/assets/fonts/AROneSans-VariableFont_ARRR,wght.ttf') format('ttf');
+}
+
+
+body{
+    background-color: aqua;
+    font-family: 'AR One Sans', sans-serif;
+}
