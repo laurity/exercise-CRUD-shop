@@ -25,4 +25,6 @@ const actualizarInventario = () =>{
 const eliminarProducto = () =>{};
 
 //Mostrar inventario final
-const mostrarInventario = ()=>{};
+const mostrarInventario = ()=>{
+    
+};
