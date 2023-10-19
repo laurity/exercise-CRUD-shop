@@ -52,12 +52,17 @@ td{
 }
 
 button{
+    cursor: pointer;
     background-color: #e9e794;
     border-radius: 15px;
     padding: 10px;
     font-size: large;
     font-weight: bold;      
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+button:hover{
+    background-color: #faf9a9;
+    transition: 0.75s;
 }
 .buttons{
     display: flex;
@@ -72,3 +77,4 @@ button{
     background-color: rgb(190, 190, 190);
     border-radius: 10px;
   }
+
