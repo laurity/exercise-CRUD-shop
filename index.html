@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CLOTHING SHOPPING</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
@@ -21,17 +21,17 @@
         </div>
         
         <div class="scroll">
-        <table class="table">
-            <th>
-                <tr class=title>
-                    <td>ID</td>
-                    <td>Nombre</td>
-                    <td>Cantidad</td>
-                    <td>Precio</td>
-                </tr>
-            </th>
+        <table class="table" id="table-inventory">
             
-            <tbody>
+                <tr class=title>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+            
+            
+            <tbody id="add-rows">
                 <tr>
                     <td>1</td>
                     <td>Pantalon</td>
@@ -73,11 +73,18 @@
             </table>
         </div>
             <div class="buttons">
-                <button type="button" class="new" id="new">Crear</button>
+                <button type="submit" class="new" id="new">Crear</button>
                 <button type="button" class="update" id="update">Actualizar</button>
                 <button type="button" class="delete" id="delete">Borrar</button><ul>
             </div>
-            <div id="action-buttons"></div>
+            <div id="action-inputs" class="action-inputs">
+                <label>nombre</label>
+                <input>
+                <label>cantidad</label>
+                <input>
+                <label>precio</label>
+                <input>
+            </div>
             
                
             

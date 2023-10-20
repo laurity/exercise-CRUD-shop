@@ -3,7 +3,7 @@ const buttonSearch = document.getElementById('search-button');
 const newProduct = document.getElementById('new');
 const updateProduct = document.getElementById('update');
 const deleteProduct = document.getElementById('delete');
-const actionButtons = document.getElementById('action-buttons');
+const actionButtons = document.getElementById('action-inputs');
 
 document.addEventListener('DOMContentLoaded', () =>{
 
@@ -18,7 +18,6 @@ const inventario =[
  */
 //Añadimos nueva sección
 inventario.push({ id: 4, nombre: "Gorras", cantidad: 40, precio: 18 });
-
 
 //Actualizar Camisetas
 const tShirts = inventario.find(inventario => inventario.nombre === "Camisetas");
