@@ -29,59 +29,35 @@ document.addEventListener('DOMContentLoaded', () =>{
         console.log(inventario);
         console.log(tShirts);    
 
-//Variable para sumar inventario
-let totalInventario = 0;
-
-/**
- * PARTE 2  
- */
-
-//En caso de que no lo encuentre, que salga no encontrado
-
-
-const buscarProducto = (product) =>{
-}
-
-
-//Agregar inventario o si no actualizarlo
-const actualizarInventario = () =>{
-}
-
-
-//Eliminar el producto
-const eliminarProducto = () =>{};
-
+   //Variable para sumar inventario
+let totalInventario = 0;     
 
 //Mostrar suma inventario final
     for (const item of inventario) {
         totalInventario += item.cantidad * item.precio;
     }
     console.log("Es " + totalInventario);
-});
 
-function mostrarInventario() {
-    addProduct.innerHTML = "";
+/**
+ * PARTE 2  
+ */
 
-    inventario.forEach(producto => {
-        const row = document.createElement("tr");
-
-        const idCell = document.createElement("td");
-        idCell.textContent = producto.id;
-        row.appendChild(idCell);
-
-        const nombreCell = document.createElement("td");
-        nombreCell.textContent = producto.nombre;
-        row.appendChild(nombreCell);
-
-        const cantidadCell = document.createElement("td");
-        cantidadCell.textContent = producto.cantidad;
-        row.appendChild(cantidadCell);
-
-        const precioCell = document.createElement("td");
-        precioCell.textContent = producto.precio;
-        row.appendChild(precioCell);
-
-        addProduct.appendChild(row);
-    });
-    mostrarInventario();
+//En caso de que no lo encuentre, que salga no encontrado
+const buscarProducto = (product) =>{
+    for (const item of inventario) {
+        if (item.nombre === product){
+            return item;
+        }
+    return "no se encuentra en el inventario";
 }
+};
+
+//Agregar inventario o si no actualizarlo
+const actualizarInventario = (id, nombre, cantidad, precio) => {
+
+};
+
+//Eliminar el producto
+const eliminarProducto = () =>{};
+
+});
