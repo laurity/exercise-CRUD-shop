@@ -1,93 +1,113 @@
-*{
-    margin: 10px;
-    padding: 0px;
+@font-face {
+    font-family: 'MPlus';
+    src: url('/assets/fonts/MPLUS1p-Regular.ttf') format('truetype');
 }
-
 
 body{
-    text-align: center;
-    background: rgb(238,174,202);
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(233,231,148,1) 100%);
-    font-family: 'Tilt Neon', 'sans-serif';
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background: #83a4d4;
+    background: linear-gradient(to left, #83a4d4, #b6fbff);
+    
 }
 h1{
-    font-size: 50px;
+    font-family: 'MPlus';
 }
-.search-div{
+.container{
     display: flex;
-    align-items: center;
-    margin: auto;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    background: #e0eafc; 
+    background: linear-gradient(to right, #e0eafc, #cfdef3); 
+    width: 50%;
+    min-width: 550px;
+    margin: 50px auto;
+    padding: 10px;
     border-radius: 15px;
-    width: 450px;
-    
+}
+
+.search-div{
+padding-bottom: 15px;
+width: 85%;
+margin: auto;
+
+}
+.search{
+    background-color: #84b6f4;
 }
 .product{
-    width: 900px;
-    height: 30px;
-    border-radius: 15px;
-    padding-left: 5px;
+    width: 75%;
 }
-.scroll{
-    height: 320px;
-    overflow-y: scroll;
+.addClass{
+    display: block;
 }
-.title{
-    font-weight: 900;
-    font-size: x-large;
-    background: rgba(148,179,233,1) 100%;
-    border: 3px black solid;
-    
+label{
+    font-weight: bold;
+    margin-right: 2px;
+}
+input{
+    margin: 0 5px 10px 0;
+    border-radius: 5px;
+    border-color: gray;
+    border: none;
+    padding: 7.5px;
+}
+button{
+    color: white;
+    margin-left: 5px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-size: 12.5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 1s ease;
+    position: relative;
+}
+button:hover{
+    background: #000000;
+    opacity: 50%;
+    color: #fff;
+}
+.nameInput{
+    width: 21.5%;
+}
+.stockInput{
+    width: 61px;
+}
+.priceInput{
+    width: 68px;
+}
+.add{
+    background-color: #77dd77;
+    width: 9%;
 }
 table{
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    background-color: aliceblue;
-    font-size: 20px;
     border-collapse: collapse;
-    
+    width: 75%;
+    margin: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+}
+th{
+    font-family: 'MPlus';
+    padding: 10px;
+    font-size: x-large;
+    border-right: 1px black solid;
+    border-bottom: 1px black solid;
 }
 
 td{
-    border: 3px black solid;
-    padding: 8px;
+    border-right: 1px black solid;
+    padding: 5px;
 }
-
-button{
-    cursor: pointer;
-    background-color: #e9e794;
-    border-radius: 15px;
-    padding: 10px;
-    font-size: large;
-    font-weight: bold;      
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+.acciones{
+    border-right: none;
 }
-button:hover{
-    background-color: #fefdca;
-    transition: 0.50s;
+.edit{
+    background-color: #ffc567;
 }
-.buttons{
-    display: flex;
-  align-items: center;
-  justify-content: center;
+.delete{
+    background-color: #ff6961;
 }
-.action-inputs{
-    margin: auto;
-    background-color:  #94b3e9;
-    border-radius: 15px;
-    width: 750px;
-}
-.scroll::-webkit-scrollbar{
-    width: 10px;
-}
-.scroll::-webkit-scrollbar-thumb{
-    background-color: rgb(190, 190, 190);
-    border-radius: 10px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .action-inputs {
-        flex-direction: column;
-    }
-}
-

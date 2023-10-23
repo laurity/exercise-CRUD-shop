@@ -1,6 +1,6 @@
 const searchProduct = document.getElementById("product-search");
 const buttonSearch = document.getElementById("search");
-const newProduct = document.getElementById("new");
+const newProduct = document.getElementById("add");
 const updateProduct = document.getElementById("update");
 const deleteProduct = document.getElementById("delete");
 const actionButtons = document.getElementById("action-inputs");
@@ -60,12 +60,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const cellNombre = row.insertCell(1);
     const cellCantidad = row.insertCell(2);
     const cellPrecio = row.insertCell(3);
+    const cellAcciones = row.insertCell(4);
 
     cellId.textContent = product.id;
     cellNombre.textContent = product.nombre;
     cellCantidad.textContent = product.cantidad;
     cellPrecio.textContent = product.precio;
-  };
+
+    cellAcciones.classList.add("acciones")
+
+    const addEditButton = document.createElement("button");
+    addEditButton.classList.add("edit")
+    addEditButton.innerText = "🖍 Editar";
+    addEditButton.addEventListener ("click", () => {
+
+    })
+    cellAcciones.appendChild(addEditButton);
+
+
+    const addDeleteButton = document.createElement("button");
+    addDeleteButton.classList.add("delete");
+    addDeleteButton.innerText = "🗑 Borrar";
+    addDeleteButton.addEventListener ("click", () => {
+
+    })
+    cellAcciones.appendChild(addDeleteButton);
+    };
 
   const buscarProducto = (name) => {
     if (name === ''){

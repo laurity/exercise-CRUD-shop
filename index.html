@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CLOTHING SHOPPING</title>
     <link rel="stylesheet" href="./styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -16,36 +13,33 @@
         <h1>CLOTHING SHOPPING CRUD</h1>
         <div class="search-div">
             <input type="search" id="product-search" class="product" placeholder="Busca el producto...">
-            <button type="button" class="search" id="search">Buscar</button>
-            <br />
+            <button type="button" class="search" id="search">🔍︎ Buscar</button>
+            <div class="addClass" id="add">
+                <label for="nameInput">Nombre:</label>
+                <input type="text" class="nameInput" id="nameInput">
+                <label for="stockInput">Cantidad:</label>
+                <input type="number" class="stockInput" id="stockInput">
+                <label for="priceInput">Precio:</label>
+                <input type="number" step="0.01" class="priceInput" id="priceInput">
+                <button type="submit" class="add" id="add">✚ Añadir</button>
+            </div>
         </div>
-        
-        <div class="scroll">
-        <table class="table" id="table-inventory">
-            
-                <tr class=title>
+        <table id="table-inventory">
+                <tr>
                     <th>ID</th>
                     <th>Nombres</th>
                     <th>Cantidades</th>
-                    <th>Precios</th>
+                    <th>Precio</th>
+                    <th class="acciones">Acciones</th>
                 </tr>
-            
-            
             <tbody id="add-rows">
-              
+                <div class="scroll"></div>
             </tbody>
             </table>
-        </div>
-            <div class="buttons">
-                <button type="submit" class="new" id="new">Crear</button>
-                <button type="button" class="update" id="update">Actualizar</button>
-                <button type="button" class="delete" id="delete">Borrar</button><ul>
-            </div>
-            <div id="action-inputs" class="action-inputs">
-            </div>
+            <div class="not-found"></div>
    
     </div>
-    <script type="module" src="scripts/main.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 
 </html>
