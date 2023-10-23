@@ -4,7 +4,7 @@ const newProduct = document.getElementById("form-add");
 const newProductButton = document.getElementById("add");
 const updateProduct = document.getElementById("update");
 const deleteProduct = document.getElementById("delete");
-const actionButtons = document.getElementById("action-inputs");
+const message = document.getElementById("not-found");
 const tbody = document.getElementById("add-rows");
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -94,21 +94,13 @@ document.addEventListener("DOMContentLoaded", () => {
       actionButtons.innerHTML= '';
     }
     else{
-      /*let check = false;
-      let index;
-      for (let i = 0; i < inventario.length; i++) {
-        if (inventario[i].nombre.toLowerCase() === name) {
-          mostrarInventario(i);
-        } 
-      }*/
-
       const productoEncontrado = inventario.find(p => p.nombre.toLowerCase() === name.toLowerCase());
       if (productoEncontrado){
         mostrarInventario(productoEncontrado);
-        actionButtons.innerHTML= '';
+        message.innerHTML= '';
       }
       else{
-        actionButtons.innerHTML= `<span>Producto no encontrado</span>`
+        message.innerHTML= `<p>Producto no encontrado<p>`
       }
     }
    

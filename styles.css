@@ -21,7 +21,7 @@ h1{
     background: linear-gradient(to right, #e0eafc, #cfdef3); 
     width: 50%;
     min-width: 550px;
-    margin: 50px auto;
+    margin: 100px auto;
     padding: 10px;
     border-radius: 15px;
 }
@@ -87,7 +87,6 @@ button:hover{
 table{
     border-collapse: collapse;
     width: 75%;
-    margin: 20px;
     border-radius: 15px;
     text-align: center;
     margin: auto;
@@ -102,7 +101,7 @@ th{
 
 td{
     border-right: 1px black solid;
-    padding: 5px;
+    padding: 2px;
 }
 .acciones{
     border-right: none;
@@ -112,4 +111,16 @@ td{
 }
 .delete{
     background-color: #ff6961;
+}
+.not-found{
+    font-weight: bold;
+    font-size: large;
+}
+
+.scroll{
+    height: 400px;
+    overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar{
+    width: 12px;
 }
