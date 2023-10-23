@@ -1,6 +1,7 @@
 const searchProduct = document.getElementById("product-search");
 const buttonSearch = document.getElementById("search");
-const newProduct = document.getElementById("add");
+const newProduct = document.getElementById("form-add");
+const newProductButton = document.getElementById("add");
 const updateProduct = document.getElementById("update");
 const deleteProduct = document.getElementById("delete");
 const actionButtons = document.getElementById("action-inputs");
@@ -114,12 +115,32 @@ document.addEventListener("DOMContentLoaded", () => {
     
   };
 
-  const actualizarInventario = (nombre, cantidad, precio) => {
-    //OJO QUE SI FILTRO PUEDO SOBRESCRIBIR. DEBO DE llamar a mostrarInventario
-    while(!mostrarInventario){
-      
-    }
+  const actualizarInventario = () => {
+    newProduct.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById("nameInput").value;
+      const stockInput = parseInt(document.getElementById("stockInput").value);
+      const priceInput = parseFloat(document.getElementById("priceInput").value);
+  
+      if (nameInput && !isNaN(stockInput) && !isNaN(priceInput)) {
+        const newItem = {
+          id: inventario.length + 1,
+          nombre: nameInput,
+          cantidad: stockInput,
+          precio: priceInput,
+        };
+  
+        inventario.push(newItem);
+        tbody.innerHTML = "";
+  
+        newProduct.reset();
+  
+        mostrarInventario();
+        console.log(inventario);
+      }
+    });
   };
+  
 
   mostrarInventario();
 
@@ -128,5 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
   buttonSearch.addEventListener("click", () => {
     const productName = searchProduct.value;
     buscarProducto(productName);
+  });
+
+  newProductButton.addEventListener("click", () =>{
+    actualizarInventario();
   });
 });
