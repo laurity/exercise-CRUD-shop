@@ -116,11 +116,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const actualizarInventario = (nombre, cantidad, precio) => {
     //OJO QUE SI FILTRO PUEDO SOBRESCRIBIR. DEBO DE llamar a mostrarInventario
+    while(!mostrarInventario){
+      
+    }
   };
 
   mostrarInventario();
 
-  searchProduct
+  //------------------------------------------------------------------------------
+
   buttonSearch.addEventListener("click", () => {
     const productName = searchProduct.value;
     buscarProducto(productName);

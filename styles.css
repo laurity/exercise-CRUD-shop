@@ -39,11 +39,21 @@ margin: auto;
     width: 75%;
 }
 .addClass{
-    display: block;
+    padding-bottom: 15px;
+margin: auto;
+}
+.nameInput{
+    width: 25.5%;
+}
+.stockInput{
+    width: 7.5%;
+}
+.priceInput{
+    width: 7.5%;
 }
 label{
-    font-weight: bold;
     margin-right: 2px;
+    font-size: medium;
 }
 input{
     margin: 0 5px 10px 0;
@@ -57,7 +67,7 @@ button{
     margin-left: 5px;
     border-radius: 5px;
     border: none;
-    padding: 5px;
+    padding: 10px;
     font-size: 12.5px;
     font-weight: bold;
     cursor: pointer;
@@ -65,22 +75,14 @@ button{
     position: relative;
 }
 button:hover{
-    background: #000000;
-    opacity: 50%;
-    color: #fff;
+    background: #eeeeee;
+    color: #000000;
 }
-.nameInput{
-    width: 21.5%;
-}
-.stockInput{
-    width: 61px;
-}
-.priceInput{
-    width: 68px;
-}
+
 .add{
     background-color: #77dd77;
-    width: 9%;
+
+    
 }
 table{
     border-collapse: collapse;
