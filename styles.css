@@ -19,7 +19,7 @@ h1{
     text-align: center;
     background: #e0eafc; 
     background: linear-gradient(to right, #e0eafc, #cfdef3); 
-    width: 50%;
+    width: 75%;
     min-width: 550px;
     margin: 100px auto;
     padding: 10px;
@@ -39,11 +39,12 @@ margin: auto;
     width: 75%;
 }
 .addClass{
-    padding-bottom: 15px;
-margin: auto;
+    width: 75%;
+    padding-bottom: 15px;   
+    margin: auto;
 }
 .nameInput{
-    width: 25.5%;
+    width: 30%;
 }
 .stockInput{
     width: 7.5%;
@@ -118,7 +119,7 @@ td{
 }
 
 .scroll{
-    height: 400px;
+    height: 350px;
     overflow-y: scroll;
 }
 .scroll::-webkit-scrollbar{
