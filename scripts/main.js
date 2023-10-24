@@ -3,7 +3,6 @@ const buttonSearch = document.getElementById("search");
 const newProduct = document.getElementById("form-add");
 const newProductButton = document.getElementById("add");
 const updateProduct = document.getElementById("update");
-const deleteProduct = document.getElementById("delete");
 const message = document.getElementById("not-found");
 const tbody = document.getElementById("add-rows");
 
@@ -81,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const addDeleteButton = document.createElement("button");
     addDeleteButton.classList.add("delete");
+    addDeleteButton.setAttribute('id','delete');
     addDeleteButton.innerText = "🗑 Borrar";
     addDeleteButton.addEventListener ("click", () => {
 
@@ -133,6 +133,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
   
+const eliminarInventario = (productName) =>{
+  for (const product of inventario){
+    if(product.nombre === productName){
+      const index = inventario.indexOf(product);
+      if (index !==-1){
+        inventario.splice(index, 1);
+        mostrarInventario();
+        console.log(index);
+          }
+    }
+  }
+}
 
   mostrarInventario();
 
@@ -145,5 +157,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   newProductButton.addEventListener("click", () =>{
     actualizarInventario();
+  });
+
+  const deleteProduct = document.getElementById("delete");
+
+  deleteProduct.addEventListener("click", () =>{
+    eliminarInventario(inventario);
   });
 });
