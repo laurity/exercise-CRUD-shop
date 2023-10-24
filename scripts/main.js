@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("El valor total del inventario es " + totalInventario);
 
   //------------------------------------------------------------------------------
-  const mostrarInventario = product => {
+  const mostrarInventario = (product) => {
     tbody.innerHTML = "";
 
     if (product) {
@@ -67,44 +67,38 @@ document.addEventListener("DOMContentLoaded", () => {
     cellCantidad.textContent = product.cantidad;
     cellPrecio.textContent = product.precio;
 
-    cellAcciones.classList.add("acciones")
+    cellAcciones.classList.add("acciones");
 
     const addEditButton = document.createElement("button");
-    addEditButton.classList.add("edit")
+    addEditButton.classList.add("edit");
+    addEditButton.setAttribute("id", "update");
     addEditButton.innerText = "🖍 Editar";
-    addEditButton.addEventListener ("click", () => {
-
-    })
+    addEditButton.addEventListener("click", () => {});
     cellAcciones.appendChild(addEditButton);
-
 
     const addDeleteButton = document.createElement("button");
     addDeleteButton.classList.add("delete");
-    addDeleteButton.setAttribute('id','delete');
+    addDeleteButton.setAttribute("id", `delete-${product.id}`);
+    addDeleteButton.addEventListener('click', eliminarInventario);
     addDeleteButton.innerText = "🗑 Borrar";
-    addDeleteButton.addEventListener ("click", () => {
-
-    })
     cellAcciones.appendChild(addDeleteButton);
-    };
+  };
 
   const buscarProducto = (name) => {
-    if (name === ''){
+    if (name === "") {
       mostrarInventario();
-      actionButtons.innerHTML= '';
-    }
-    else{
-      const productoEncontrado = inventario.find(p => p.nombre.toLowerCase() === name.toLowerCase());
-      if (productoEncontrado){
+      actionButtons.innerHTML = "";
+    } else {
+      const productoEncontrado = inventario.find(
+        (p) => p.nombre.toLowerCase() === name.toLowerCase()
+      );
+      if (productoEncontrado) {
         mostrarInventario(productoEncontrado);
-        message.innerHTML= '';
-      }
-      else{
-        message.innerHTML= `<p>Producto no encontrado<p>`
+        message.innerHTML = "";
+      } else {
+        message.innerHTML = `<p>Producto no encontrado<p>`;
       }
     }
-   
-    
   };
 
   const actualizarInventario = () => {
@@ -112,8 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const nameInput = document.getElementById("nameInput").value;
       const stockInput = parseInt(document.getElementById("stockInput").value);
-      const priceInput = parseFloat(document.getElementById("priceInput").value);
-  
+      const priceInput = parseFloat(
+        document.getElementById("priceInput").value
+      );
+
       if (nameInput && !isNaN(stockInput) && !isNaN(priceInput)) {
         const newItem = {
           id: inventario.length + 1,
@@ -121,30 +117,28 @@ document.addEventListener("DOMContentLoaded", () => {
           cantidad: stockInput,
           precio: priceInput,
         };
-  
+
         inventario.push(newItem);
         tbody.innerHTML = "";
-  
+
         newProduct.reset();
-  
+
         mostrarInventario();
         console.log(inventario);
       }
     });
   };
-  
-const eliminarInventario = (productName) =>{
-  for (const product of inventario){
-    if(product.nombre === productName){
-      const index = inventario.indexOf(product);
-      if (index !==-1){
-        inventario.splice(index, 1);
+
+  const eliminarInventario = (e) => {
+
+    inventario.forEach(product =>{
+      if(product.id.toString() === e.target.id.slice(7)){ // Coge desde el principio hasta el final
+        inventario.splice(inventario.indexOf(product), 1);
         mostrarInventario();
-        console.log(index);
-          }
-    }
-  }
-}
+      }
+      
+    });
+  };
 
   mostrarInventario();
 
@@ -155,13 +149,8 @@ const eliminarInventario = (productName) =>{
     buscarProducto(productName);
   });
 
-  newProductButton.addEventListener("click", () =>{
+  newProductButton.addEventListener("click", () => {
     actualizarInventario();
   });
 
-  const deleteProduct = document.getElementById("delete");
-
-  deleteProduct.addEventListener("click", () =>{
-    eliminarInventario(inventario);
-  });
 });
