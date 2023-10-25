@@ -2,9 +2,11 @@ const searchProduct = document.getElementById("product-search");
 const buttonSearch = document.getElementById("search");
 const newProduct = document.getElementById("form-add");
 const newProductButton = document.getElementById("add");
-const updateProduct = document.getElementById("update");
 const message = document.getElementById("not-found");
 const tbody = document.getElementById("add-rows");
+const modal = document.getElementById("modal");
+const updateForm = document.getElementById("update-form");
+const updateButton = document.getElementById("updateButton");
 
 document.addEventListener("DOMContentLoaded", () => {
   let inventario = [
@@ -69,12 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cellAcciones.classList.add("acciones");
 
+    const newSearchUpdate = document.createElement("a");
+    const editURL = `../updateItem.html`; // Cambia esta URL según tus necesidades
+    newSearchUpdate.setAttribute("href", editURL);
+
     const addEditButton = document.createElement("button");
     addEditButton.classList.add("edit");
-    addEditButton.setAttribute("id", "update");
+    addEditButton.setAttribute("id", `edit-${product.id}`);
     addEditButton.innerText = "🖍 Editar";
     addEditButton.addEventListener("click", () => {});
-    cellAcciones.appendChild(addEditButton);
+    newSearchUpdate.append(addEditButton);
+
+    cellAcciones.appendChild(newSearchUpdate); 
 
     const addDeleteButton = document.createElement("button");
     addDeleteButton.classList.add("delete");
@@ -101,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const actualizarInventario = () => {
+  const crearInventario = () => {
     newProduct.addEventListener("submit", (e) => {
       e.preventDefault();
       const nameInput = document.getElementById("nameInput").value;
@@ -129,6 +137,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const mostrarModal = (e) =>{
+    inventario.forEach(product =>{
+      if(product.id.toString() === e.target.id.slice(7)){
+
+      }
+    })
+  }
+
   const eliminarInventario = (e) => {
 
     inventario.forEach(product =>{
@@ -150,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   newProductButton.addEventListener("click", () => {
-    actualizarInventario();
+    crearInventario();
   });
 
 });
