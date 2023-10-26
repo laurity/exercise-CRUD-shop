@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Inventario</title>
+    <link rel="stylesheet" href="/styles/update.css">
 </head>
 <body>
     <h1>Actualizar inventario</h1>
-    <form id="update-form">
+    <form id="update-form" class="update-form">
         <label for="nameUpdate">Nombre</label>
-        <input type="text" id="nameUpdate">
+        <input type="text" id="nameUpdate" placeholder="Ingrese nombre..." required>
         <label for="stockUpdate">Cantidad</label>
-        <input type="text" id="stockUpdate">
+        <input type="text" id="stockUpdate" placeholder="Ingrese cantidad..." required>
         <label for="priceUpdate">Precio</label>
-        <input type="text" id="priceUpdate">
+        <input type="text" id="priceUpdate" step="0.01" placeholder="Ingrese precio..." required>
 
-        <button id="updateButton" class="updateButton">Actualizar</button>
+      <a href="index.html"><button type="submit" id="updateButton" class="updateButton">↻ Actualizar</a></button>
     </form>
-    
+    <script src="scripts/main.js"></script>
 </body>
 </html>
