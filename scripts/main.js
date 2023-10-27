@@ -4,8 +4,6 @@ const newProduct = document.getElementById("form-add");
 const newProductButton = document.getElementById("add");
 const message = document.getElementById("not-found");
 const tbody = document.getElementById("add-rows");
-const modal = document.getElementById("modal");
-const updateForm = document.getElementById("update-form");
 const updateButton = document.getElementById("updateButton");
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -13,12 +11,28 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: 1, nombre: "Camisetas", cantidad: 50, precio: 15 },
     { id: 2, nombre: "Pantalones", cantidad: 30, precio: 30 },
     { id: 3, nombre: "Zapatos", cantidad: 20, precio: 50 },
+    { id: 4, nombre: "Sudaderas", cantidad: 40, precio: 20 },
+    { id: 5, nombre: "Abrigos", cantidad: 25, precio: 40 },
+    { id: 6, nombre: "Chaquetas", cantidad: 15, precio: 35 },
+    { id: 7, nombre: "Faldas", cantidad: 60, precio: 25 },
+    { id: 8, nombre: "Vestidos", cantidad: 50, precio: 40 },
+    { id: 9, nombre: "Ropa interior", cantidad: 100, precio: 10 },
+    { id: 10, nombre: "Medias", cantidad: 50, precio: 5 },
+    { id: 11, nombre: "Calcetines", cantidad: 100, precio: 2 },
+    { id: 12, nombre: "Lencería", cantidad: 50, precio: 30 },
+    { id: 13, nombre: "Calzado deportivo", cantidad: 40, precio: 60 },
+    { id: 14, nombre: "Sandalias", cantidad: 30, precio: 45 },
+    { id: 15, nombre: "Botas", cantidad: 20, precio: 70 },
+    { id: 16, nombre: "Accesorios para el cabello", cantidad: 50, precio: 10 },
+    { id: 17, nombre: "Maquillaje", cantidad: 50, precio: 20 },
+    { id: 18, nombre: "Perfumes", cantidad: 50, precio: 40 },
+    { id: 19, nombre: "Bolsos", cantidad: 50, precio: 50 },
+    { id: 20, nombre: "Carteras", cantidad: 50, precio: 40 },
   ];
-
   // PARTE 1
 
   // Añadimos una nueva sección
-  inventario.push({ id: 4, nombre: "Gorras", cantidad: 40, precio: 18 });
+  inventario.push({ id: inventario.length+1, nombre: "Gorras", cantidad: 40, precio: 18 });
 
   // Actualizar Camisetas
   const tShirts = inventario.find((item) => item.nombre === "Camisetas");
@@ -79,15 +93,15 @@ document.addEventListener("DOMContentLoaded", () => {
     addEditButton.classList.add("edit");
     addEditButton.setAttribute("id", `edit-${product.id}`);
     addEditButton.innerText = "🖍 Editar";
-    addEditButton.addEventListener("click", () => {});
+    addEditButton.addEventListener("click", () =>{});
     newSearchUpdate.append(addEditButton);
 
-    cellAcciones.appendChild(newSearchUpdate); 
+    cellAcciones.appendChild(newSearchUpdate);
 
     const addDeleteButton = document.createElement("button");
     addDeleteButton.classList.add("delete");
     addDeleteButton.setAttribute("id", `delete-${product.id}`);
-    addDeleteButton.addEventListener('click', eliminarInventario);
+    addDeleteButton.addEventListener("click", eliminarInventario);
     addDeleteButton.innerText = "🗑 Borrar";
     cellAcciones.appendChild(addDeleteButton);
   };
@@ -137,22 +151,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const mostrarModal = (e) =>{
-    inventario.forEach(product =>{
-      if(product.id.toString() === e.target.id.slice(7)){
+  const actualizarInventario = (e) => {
+    inventario.forEach((product) => {
+      if (
+        product.id.toString() === e.target.id.slice(7) &&
+        document.getElementById("stockInput").value !== "" &&
+        document.getElementById("priceInput").value !== ""
+      ) {
+        const stockInput = parseInt(
+          document.getElementById("stockInput").value
+        );
+        const priceInput = parseFloat(
+          document.getElementById("priceInput").value
+        );
 
+        product.cantidad = stockInput;
+        product.precio = priceInput;
+
+        console.log(inventario);
       }
-    })
-  }
+      mostrarInventario();
+    });
+  };
 
   const eliminarInventario = (e) => {
-
-    inventario.forEach(product =>{
-      if(product.id.toString() === e.target.id.slice(7)){ // Coge desde el principio hasta el final
+    inventario.forEach((product) => {
+      if (product.id.toString() === e.target.id.slice(7)) {
+        // Coge desde el principio hasta el final
         inventario.splice(inventario.indexOf(product), 1);
         mostrarInventario();
       }
-      
     });
   };
 
@@ -168,5 +196,6 @@ document.addEventListener("DOMContentLoaded", () => {
   newProductButton.addEventListener("click", () => {
     crearInventario();
   });
-
+  updateButton.addEventListener("click", actualizarInventario);
 });
+
