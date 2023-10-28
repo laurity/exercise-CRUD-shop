@@ -4,7 +4,7 @@ const newProduct = document.getElementById("form-add");
 const newProductButton = document.getElementById("add");
 const message = document.getElementById("not-found");
 const tbody = document.getElementById("add-rows");
-const updateButton = document.getElementById("updateButton");
+const formEdit = document.getElementById("form-edit");
 
 document.addEventListener("DOMContentLoaded", () => {
   let inventario = [
@@ -59,12 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (product) {
       crearFila(product);
-    } else {
+    }
+    else {
       inventario.forEach((product) => {
         crearFila(product);
       });
     }
   };
+  
 
   /**
    * Funcion que se encarga de crear una fila de la tabla
@@ -85,18 +87,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cellAcciones.classList.add("acciones");
 
-    const newSearchUpdate = document.createElement("a");
-    const editURL = `../updateItem.html`; // Cambia esta URL según tus necesidades
-    newSearchUpdate.setAttribute("href", editURL);
+
 
     const addEditButton = document.createElement("button");
     addEditButton.classList.add("edit");
     addEditButton.setAttribute("id", `edit-${product.id}`);
     addEditButton.innerText = "🖍 Editar";
-    addEditButton.addEventListener("click", () =>{});
-    newSearchUpdate.append(addEditButton);
-
-    cellAcciones.appendChild(newSearchUpdate);
+    addEditButton.addEventListener("click", () =>{
+      formEdit.innerHTML = `
+      <label>Cantidad</label>
+      <input type="number" id="stockUpdate" placeholder= "Actualiza la cantidad aquí..." required>
+      <label>Precio</label>
+      <input type="number" step="0.01" id="priceUpdate" placeholder= "Actualiza la cantidad aquí..." required>
+      <button id="updateButton" class="updateButton">Actualizar</button>
+      `;
+      const updateButton = document.getElementById("updateButton");
+      updateButton.setAttribute("id", `updateButton-${product.id}`);
+      updateButton.addEventListener("click", actualizarInventario);
+    });
+    cellAcciones.append(addEditButton);
 
     const addDeleteButton = document.createElement("button");
     addDeleteButton.classList.add("delete");
@@ -105,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     addDeleteButton.innerText = "🗑 Borrar";
     cellAcciones.appendChild(addDeleteButton);
   };
-
+ 
   const buscarProducto = (name) => {
     if (name === "") {
       mostrarInventario();
@@ -127,17 +136,17 @@ document.addEventListener("DOMContentLoaded", () => {
     newProduct.addEventListener("submit", (e) => {
       e.preventDefault();
       const nameInput = document.getElementById("nameInput").value;
-      const stockInput = parseInt(document.getElementById("stockInput").value);
-      const priceInput = parseFloat(
-        document.getElementById("priceInput").value
+      const stockUpdate = parseInt(document.getElementById("stockUpdate").value);
+      const priceUpdate = parseFloat(
+        document.getElementById("priceUpdate").value
       );
 
-      if (nameInput && !isNaN(stockInput) && !isNaN(priceInput)) {
+      if (nameInput && !isNaN(stockUpdate) && !isNaN(priceUpdate)) {
         const newItem = {
           id: inventario.length + 1,
           nombre: nameInput,
-          cantidad: stockInput,
-          precio: priceInput,
+          cantidad: stockUpdate,
+          precio: priceUpdate,
         };
 
         inventario.push(newItem);
@@ -151,26 +160,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+
+
   const actualizarInventario = (e) => {
     inventario.forEach((product) => {
       if (
-        product.id.toString() === e.target.id.slice(7) &&
-        document.getElementById("stockInput").value !== "" &&
-        document.getElementById("priceInput").value !== ""
-      ) {
-        const stockInput = parseInt(
-          document.getElementById("stockInput").value
+        product.id.toString() === e.target.id.slice(13)
+        ) {
+        const stockUpdate = parseInt(
+          document.getElementById("stockUpdate").value
         );
-        const priceInput = parseFloat(
-          document.getElementById("priceInput").value
+        const priceUpdate = parseFloat(
+          document.getElementById("priceUpdate").value
         );
-
-        product.cantidad = stockInput;
-        product.precio = priceInput;
-
+          product.cantidad= "";
+          product.precio= "";
+          product.cantidad = stockUpdate;
+          product.precio = priceUpdate;
+          inventario.push({cantidad: stockUpdate, precio: priceUpdate});
+        console.log(inventario);
+        mostrarInventario();
         console.log(inventario);
       }
-      mostrarInventario();
+      
     });
   };
 
@@ -196,6 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
   newProductButton.addEventListener("click", () => {
     crearInventario();
   });
-  updateButton.addEventListener("click", actualizarInventario);
+  
 });
 
