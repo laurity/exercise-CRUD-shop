@@ -160,31 +160,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-
-
   const actualizarInventario = (e) => {
-    inventario.forEach((product) => {
-      if (
-        product.id.toString() === e.target.id.slice(13)
-        ) {
-        const stockUpdate = parseInt(
-          document.getElementById("stockUpdate").value
-        );
-        const priceUpdate = parseFloat(
-          document.getElementById("priceUpdate").value
-        );
-          product.cantidad= "";
-          product.precio= "";
-          product.cantidad = stockUpdate;
-          product.precio = priceUpdate;
-          inventario.push({cantidad: stockUpdate, precio: priceUpdate});
-        console.log(inventario);
-        mostrarInventario();
-        console.log(inventario);
-      }
-      
-    });
+    const product = inventario.find(
+      (p) => p.id.toString() === e.target.id.slice(13)
+    );
+  
+    if (product) {
+      product.cantidad = parseInt(document.getElementById("stockUpdate").value);
+      product.precio = parseFloat(document.getElementById("priceUpdate").value);
+      mostrarInventario();
+    }
   };
+  
 
   const eliminarInventario = (e) => {
     inventario.forEach((product) => {
@@ -210,4 +197,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
 });
-
