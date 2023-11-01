@@ -32,7 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // PARTE 1
 
   // Añadimos una nueva sección
-  inventario.push({ id: inventario.length+1, nombre: "Gorras", cantidad: 40, precio: 18 });
+  inventario.push({
+    id: inventario.length + 1,
+    nombre: "Gorras",
+    cantidad: 40,
+    precio: 18,
+  });
 
   // Actualizar Camisetas
   const tShirts = inventario.find((item) => item.nombre === "Camisetas");
@@ -59,14 +64,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (product) {
       crearFila(product);
-    }
-    else {
+    } else {
       inventario.forEach((product) => {
         crearFila(product);
       });
     }
   };
-  
 
   /**
    * Funcion que se encarga de crear una fila de la tabla
@@ -87,23 +90,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cellAcciones.classList.add("acciones");
 
-
-
     const addEditButton = document.createElement("button");
     addEditButton.classList.add("edit");
     addEditButton.setAttribute("id", `edit-${product.id}`);
     addEditButton.innerText = "🖍 Editar";
-    addEditButton.addEventListener("click", () =>{
+    addEditButton.addEventListener("click", () => {
       formEdit.innerHTML = `
       <label>Cantidad</label>
       <input type="number" id="stockUpdate" placeholder= "Actualiza la cantidad aquí..." required>
       <label>Precio</label>
       <input type="number" step="0.01" id="priceUpdate" placeholder= "Actualiza la cantidad aquí..." required>
-      <button id="updateButton" class="updateButton">Actualizar</button>
+      <button id="updateButton" class="updateButton" onclick="actualizarInventario()">Actualizar</button>
       `;
-      const updateButton = document.getElementById("updateButton");
-      updateButton.setAttribute("id", `updateButton-${product.id}`);
-      updateButton.addEventListener("click", actualizarInventario);
     });
     cellAcciones.append(addEditButton);
 
@@ -114,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     addDeleteButton.innerText = "🗑 Borrar";
     cellAcciones.appendChild(addDeleteButton);
   };
- 
+
   const buscarProducto = (name) => {
     if (name === "") {
       mostrarInventario();
@@ -132,13 +130,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const crearInventario = () => {
+  const crearProducto = () => {
     newProduct.addEventListener("submit", (e) => {
       e.preventDefault();
       const nameInput = document.getElementById("nameInput").value;
-      const stockUpdate = parseInt(document.getElementById("stockUpdate").value);
+      const stockUpdate = parseInt(document.getElementById("stockInput").value);
       const priceUpdate = parseFloat(
-        document.getElementById("priceUpdate").value
+        document.getElementById("priceInput").value
       );
 
       if (nameInput && !isNaN(stockUpdate) && !isNaN(priceUpdate)) {
@@ -147,6 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
           nombre: nameInput,
           cantidad: stockUpdate,
           precio: priceUpdate,
+          //corregir
         };
 
         inventario.push(newItem);
@@ -161,17 +160,19 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const actualizarInventario = (e) => {
-    const product = inventario.find(
-      (p) => p.id.toString() === e.target.id.slice(13)
-    );
-  
-    if (product) {
-      product.cantidad = parseInt(document.getElementById("stockUpdate").value);
-      product.precio = parseFloat(document.getElementById("priceUpdate").value);
-      mostrarInventario();
-    }
+    inventario.forEach((product) => {
+      if (product.id.toString() === e.target.id.slice(7)) {
+        product.cantidad = parseInt(
+          document.getElementById("stockUpdate").value
+        );
+        product.precio = parseFloat(
+          document.getElementById("priceUpdate").value
+        );
+
+        mostrarInventario();
+      }
+    });
   };
-  
 
   const eliminarInventario = (e) => {
     inventario.forEach((product) => {
@@ -193,7 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   newProductButton.addEventListener("click", () => {
-    crearInventario();
+    crearProducto();
   });
-  
 });
