@@ -5,6 +5,7 @@ const newProductButton = document.getElementById("add");
 const message = document.getElementById("not-found");
 const tbody = document.getElementById("add-rows");
 const formEdit = document.getElementById("form-edit");
+const total = document.getElementById("total");
 
 var inventario;
 
@@ -47,17 +48,17 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log(tShirts);
 
   // Variable para sumar inventario
-  let totalInventario = 0;
+
 
   // Suma del total del valor del inventario
-  for (const item of inventario) {
-    totalInventario += item.cantidad * item.precio;
-  }
+
+ 
   console.log("El valor total del inventario es " + totalInventario);
   mostrarInventario();
-},{ once: true });
+});
 
   //------------------------------------------------------------------------------
+  let totalInventario = 0;
   const mostrarInventario = (product) => {
     tbody.innerHTML = "";
 
@@ -70,9 +71,16 @@ document.addEventListener("DOMContentLoaded", () => {
         crearFila(product);
       });
     }
+    mostrartotalInventario();
   };
   
-
+  const mostrartotalInventario = () => {
+    totalInventario = 0;
+    inventario.forEach((product) => {
+      totalInventario += product.cantidad * product.precio;
+    });
+    total.textContent = "$" + totalInventario.toFixed(2);
+  }
   /**
    * Funcion que se encarga de crear una fila de la tabla
    * @param {*} product producto
@@ -152,12 +160,14 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         inventario.push(newItem);
+        totalInventario+= priceUpdate * stockUpdate;
         tbody.innerHTML = "";
 
         newProduct.reset();
 
         mostrarInventario();
         console.log(inventario);
+        
       }
     });
   };
@@ -171,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
       product.cantidad = parseInt(document.getElementById("stockUpdate").value);
       product.precio = parseFloat(document.getElementById("priceUpdate").value);
       formEdit.innerHTML = ``;
+      totalInventario+= product.precio * product.cantidad;
       mostrarInventario();
     }
   };
@@ -180,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inventario.forEach((product) => {
       if (product.id.toString() === e.target.id.slice(7)) {
         // Coge desde el principio hasta el final
+        totalInventario-= product.precio * product.cantidad;
         inventario.splice(inventario.indexOf(product), 1);
         mostrarInventario();
       }
