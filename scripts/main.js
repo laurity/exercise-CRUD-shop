@@ -1,3 +1,8 @@
+/**
+ * @author Laura López Alonso (Student Web Developer)
+ * @github https://github.com/laurity/exercise-CRUD-shop/
+ */
+
 //Llamadas a los ids
 const searchProduct = document.getElementById("product-search");
 const buttonSearch = document.getElementById("search");
@@ -10,6 +15,7 @@ const total = document.getElementById("total");
 
 let inventario; //Declaro la variable de inventario
 
+//----------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   inventario = [
     { id: 1, nombre: "Camisetas", cantidad: 50, precio: 15 },
@@ -97,10 +103,10 @@ const crearFila = (product) => {
     //Al clickar el boton editar, se crea una nueva ventana para editar el product
     formEdit.innerHTML = `
       <label>Cantidad</label>
-      <input type="number" id="stockUpdate" placeholder= "Actualiza la cantidad aquí..." required>
+      <input type="number" id="stockUpdate" class="stockUpdate" required>
       <label>Precio</label>
-      <input type="number" step="0.01" id="priceUpdate" placeholder= "Actualiza la cantidad aquí..." required>
-      <button id="updateButton" class="updateButton">Actualizar</button>
+      <input type="number" step="0.01" class="priceUpdate" id="priceUpdate" required>
+      <button id="updateButton" class="updateButton"> ↻ Actualizar</button>
       `;
     const updateButton = document.getElementById("updateButton");
     updateButton.setAttribute("id", `updateButton-${product.id}`);
