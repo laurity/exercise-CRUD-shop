@@ -82,13 +82,11 @@ const mostrartotalInventario = () => {
 const crearFila = (product) => {
   //Inserto filas y celdas
   const row = tbody.insertRow();
-  const cellId = row.insertCell(0);
-  const cellNombre = row.insertCell(1);
-  const cellCantidad = row.insertCell(2);
-  const cellPrecio = row.insertCell(3);
-  const cellAcciones = row.insertCell(4);
+  const cellNombre = row.insertCell(0);
+  const cellCantidad = row.insertCell(1);
+  const cellPrecio = row.insertCell(2);
+  const cellAcciones = row.insertCell(3);
 //Añado el valor de product a cada celda
-  cellId.textContent = product.id;
   cellNombre.textContent = product.nombre;
   cellCantidad.textContent = product.cantidad;
   cellPrecio.textContent = product.precio;
