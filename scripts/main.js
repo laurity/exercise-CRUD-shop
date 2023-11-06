@@ -148,14 +148,14 @@ const buscarProducto = (name) => {
  */
 const crearInventario = () => {
   newProduct.addEventListener("submit", (e) => {
-    e.preventDefault(); //cancelamos el evento
+    e.preventDefault(); 
     //añadimos los valores a traves de los inputs del formulario
     const nameInput = document.getElementById("nameInput").value;
     const stockUpdate = parseInt(document.getElementById("stockInput").value);
     const priceUpdate = parseFloat(document.getElementById("priceInput").value);
 
       //Creamos un nuevo item si se cumple las condiciones
-    if (nameInput && !isNaN(stockUpdate) && !isNaN(priceUpdate)) {
+    if (nameInput && !isNaN(stockUpdate) && stockUpdate >0 && !isNaN(priceUpdate) && priceUpdate >0) {
       const newItem = {
         id: inventario.length + 1,
         nombre: nameInput,
@@ -188,9 +188,11 @@ const actualizarInventario = (e) => {
   if (product) {
     product.cantidad = parseInt(document.getElementById("stockUpdate").value);
     product.precio = parseFloat(document.getElementById("priceUpdate").value);
+    if(product.cantidad && product.precio >0){
     formEdit.innerHTML = ``; //Elimino el formulario
     totalInventario += product.precio * product.cantidad;
     mostrarInventario();
+    }
   }
 };
 
