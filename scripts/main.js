@@ -30,7 +30,7 @@ addForm.addEventListener('submit', function(e) {
   const name = document.getElementById('nameInput').value;
   const quantity = document.getElementById('stockInput').value;
   const price = document.getElementById('priceInput').value;
-  const id = defaultProducts.length + 1;
+  const id = Date.now();
 
   const product = new Product(id, name, quantity, price);
   inventory.addProduct(product);
