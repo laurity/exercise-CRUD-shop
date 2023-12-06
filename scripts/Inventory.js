@@ -14,13 +14,16 @@ export default class Inventory {
             const productJson = JSON.stringify(plainProduct);
             localStorage.setItem(`Producto: ${product.id}`, productJson);
         }
+        
         this.displayInventory(); // Actualizar la visualización del inventario
+        this.calculateTotalValue();
     }
 
     deleteProduct(id) {
         this.products = this.products.filter(product => product.id !== id); // Filtrar y actualizar la lista de productos
         localStorage.removeItem(`Producto: ${id}`); // Eliminar el producto del almacenamiento local
         this.displayInventory(); // Actualizar la visualización del inventario
+        this.calculateTotalValue();
     }
 
     // Método para editar un producto en el inventario
@@ -62,6 +65,7 @@ export default class Inventory {
             product.quantity = quantity;
             product.price = price;
             this.displayInventory(); // Actualiza la visualización del inventario
+            this.calculateTotalValue();
         }
 
         if (product.name && product.quantity && product.price) {
@@ -104,15 +108,14 @@ export default class Inventory {
         });
     }
 
-    // Calcula el valor total del inventario
     calculateTotalValue() {
         let totalValue = 0;
         this.products.forEach(product => {
-            totalValue += product.price * product.quantity;
+            totalValue += product.quantity * product.price;
         });
-        return totalValue;
-    }
-
+        // Actualizar el valor total en el DOM
+        document.getElementById('total').textContent = `Valor total del inventario: ${totalValue.toFixed(2)}`;
+    } 
 
     get products() {
         return this.#products;

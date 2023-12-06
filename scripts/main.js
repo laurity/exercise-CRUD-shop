@@ -69,8 +69,3 @@ searchInput.addEventListener('input', function(e) {
   inventory.searchProduct(searchValue);
 });
 
-// valor del inventario
-
-let totalValue = inventory.calculateTotalValue();
-let totalElement = document.getElementById('total');
-totalElement.textContent = `Total del valor del inventario: ${totalValue.toFixed(2)}`;
