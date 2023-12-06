@@ -57,11 +57,11 @@ export default class Inventory {
         localStorage.removeItem(`Producto: ${id}`); // Elimina1 la versión anterior del producto del almacenamiento local
 
         if (product) {
-            // Actualizar la información del producto
+            // Actualiza la información del producto
             product.name = name;
             product.quantity = quantity;
             product.price = price;
-            this.displayInventory(); // Actualizar la visualización del inventario
+            this.displayInventory(); // Actualiza la visualización del inventario
         }
 
         if (product.name && product.quantity && product.price) {
@@ -92,8 +92,8 @@ export default class Inventory {
                 <td>${product.quantity}</td>
                 <td>${product.price}</td>
                 <td>
-                    <button>Borrar</button>
-                    <button>Editar</button>
+                    <button class="delete-button">🗑Borrar</button>
+                    <button class="edit-button">✎Editar</button>
                 </td>
             `;
             // Configura los eventos de clic para los botones de borrar y editar
@@ -102,6 +102,15 @@ export default class Inventory {
 
             tableBody.appendChild(row); // Agrega la fila a la tabla
         });
+    }
+
+    // Calcula el valor total del inventario
+    calculateTotalValue() {
+        let totalValue = 0;
+        this.products.forEach(product => {
+            totalValue += product.price * product.quantity;
+        });
+        return totalValue;
     }
 
 

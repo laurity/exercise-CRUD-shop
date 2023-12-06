@@ -136,3 +136,11 @@ td{
 .scroll::-webkit-scrollbar{
     width: 12px;
 }
+
+.delete-button{
+    background-color: red;
+}
+
+.edit-button{
+    background-color: #522cfd;
+}
