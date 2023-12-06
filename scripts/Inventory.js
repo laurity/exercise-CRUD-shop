@@ -1,12 +1,8 @@
-import Product from './Product.js';
-
 
 class Inventory {
     #products;
     constructor() {
-        this.#products = [
-            
-        ];
+        this.#products = [];
     }
 
     addProduct(product) {
@@ -53,12 +49,19 @@ class Inventory {
 
     updateProduct(id, name, quantity, price) {
         let product = this.products.find(product => product.id == id);
+        localStorage.removeItem(`Producto: ${id}`);
+        
         if (product) {
             product.name = name;
             product.quantity = quantity;
             product.price = price;
             this.displayInventory();
         }
+        if (product.name && product.quantity && product.price) {
+            const plainProduct = { id: product.id, name: product.name, quantity: product.quantity, price: product.price };
+            const productJson = JSON.stringify(plainProduct);
+            localStorage.setItem(`Producto: ${product.id}`, productJson);
+          }
     }
 
     searchProduct(name) {
