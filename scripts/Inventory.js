@@ -99,7 +99,7 @@ export default class Inventory {
                 <td>${product.name}</td>
                 <td>${product.quantity}</td>
                 <td>${product.price}</td>
-                <td>
+                <td class="button-column">
                     <button class="delete-button">🗑Borrar</button>
                     <button class="edit-button">✎Editar</button>
                 </td>
