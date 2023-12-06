@@ -166,48 +166,22 @@ td{
     border: none
 }
 
-h1:hover {
-  
-    animation: 1s chicle 1;
-  }
-  
-  /* Creamos la animación (con keyframes) */
-  
-  @keyframes chicle {
-    
-    
-    30% {
-      transform: scaleX(1.2) scaleY(0.7);
-    }
-  
-    40% {
-      transform: scaleX(0.7) scaleY(1.2);
-    }
-  
-     60% {
-       
-      transform: scaleX(1.1) scaleY(0.8);
-       
-    }
-    
-  }
-  
-
-
-@keyframes click{
-	25%, 75%{
-		-webkit-transform:scale(0.8);
-	}
-	50%{
-		-webkit-transform:scale(1.1);
-	}
-}
-
-.total:hover{
+/*Pseudoselector y Pseudoelemento*/
+.total:hover{ /*Para la animacion*/
     font-weight: bold;
 	-webkit-animation: 0.7s flash 1;
 }
+.total:first-line{
+    color: rgb(208, 30, 30);
+}
+.total::after{
+    content: "€";
+}
+h1:hover {  /*Para la animacion*/
+    animation: 1s chicle 1;
+  }
 
+/*Animaciones*/
 @-webkit-keyframes flash{
     50%{
     	opacity: 1;
@@ -217,3 +191,33 @@ h1:hover {
    
   }
 }  
+@keyframes click{
+	25%, 75%{
+		-webkit-transform:scale(0.8);
+	}
+	50%{
+		-webkit-transform:scale(1.1);
+	}
+}
+  
+@keyframes chicle {
+    30% {
+      transform: scaleX(1.2) scaleY(0.7);
+    }
+    40% {
+      transform: scaleX(0.7) scaleY(1.2);
+    }
+     60% { 
+      transform: scaleX(1.1) scaleY(0.8); 
+    }
+  }
+
+  
+/*Imagen de fondo*/
+body{
+    background-image: url("/assets/img/fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}

@@ -118,7 +118,7 @@ export default class Inventory {
             totalValue += product.quantity * product.price;
         });
         // Actualizar el valor total en el DOM
-        document.getElementById('total').textContent = `Valor total del inventario: ${totalValue.toFixed(2)}€`;
+        document.getElementById('total').textContent = `Valor total del inventario: ${totalValue.toFixed(2)}`;
     } 
 
     get products() {
