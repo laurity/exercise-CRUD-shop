@@ -2,6 +2,7 @@ import Product from './Product.js';
 import Inventory from './Inventory.js';
 import { storeProducts } from './localStorage.js';
 
+// Crear una nueva instancia de la clase Inventory
 const inventory = new Inventory();
 
 let defaultProducts = [
@@ -22,37 +23,48 @@ let defaultProducts = [
     new Product(15, 'Zapatillas', 70, 59.99),
 ]
 
+// Añadir los productos por defecto al inventario
 defaultProducts.forEach(product => inventory.addProduct(product));
+// Llamada a la función para almacenar los productos en el almacenamiento local
 storeProducts(defaultProducts);
 
-
+// Obtener el formulario de añadir
 const addForm = document.getElementById('form-add');
+// Añadir un evento de envío al formulario
 addForm.addEventListener('submit', function(e) {
   e.preventDefault();
   const name = document.getElementById('nameInput').value;
   const quantity = document.getElementById('stockInput').value;
   const price = document.getElementById('priceInput').value;
-  const id = Date.now();
+  const id = Date.now(); // Usar la fecha actual como id
 
+  // Crear un nuevo producto con los valores obtenidos
   const product = new Product(id, name, quantity, price);
+  // Añadir el producto al inventario
   inventory.addProduct(product);
-  this.reset();
+  this.reset(); // Limpiar el formulario
 });
 
+// Obtener el formulario de editar
 const editForm = document.getElementById('form-edit');
+// Añadir un evento de envío al formulario
 editForm.addEventListener('submit', function(e) {
-  e.preventDefault();
+  e.preventDefault(); 
   const name = document.getElementById('nameInput').value;
   const quantity = document.getElementById('stockInput').value;
   const price = document.getElementById('priceInput').value;
   const id = document.getElementById('editId').value;
 
+  // Actualizar el producto en el inventario con los nuevos valores
   inventory.updateProduct(id, name, quantity, price);
-  this.reset();
+  this.reset(); 
 });
 
+// Obtener el campo de búsqueda
 const searchInput = document.getElementById('product-search');
+// Añadir un evento de entrada al campo de búsqueda
 searchInput.addEventListener('input', function(e) {
-  const searchValue = e.target.value;
+  const searchValue = e.target.value; // Obtener el valor de búsqueda
+  // Buscar el producto en el inventario
   inventory.searchProduct(searchValue);
 });
