@@ -132,6 +132,7 @@ td{
 .scroll{
     height: 350px;
     overflow-y: scroll;
+    border-right: none;
 }
 .scroll::-webkit-scrollbar{
     width: 12px;
@@ -144,3 +145,20 @@ td{
 .edit-button{
     background-color: #522cfd;
 }
+
+.update-form{
+    text-align: center;
+    background: #e0eafc; 
+    background: linear-gradient(to right, #e0eafc, #cfdef3); 
+    width: 75%;
+    min-width: 551px;
+    margin: 100px auto;
+    padding: 10px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 14px 4px rgb(0, 0, 0); 
+    box-shadow: 0px 0px 35px 4px rgb(83, 143, 255);
+}
+.submit-update{
+    background-color: #ff93c4;
+}
+

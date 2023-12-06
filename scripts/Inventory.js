@@ -32,12 +32,16 @@ export default class Inventory {
         if (product) {
             // Crear un formulario para editar el producto
             let editForm = document.createElement('form');
-            editForm.innerHTML = `
+            editForm.innerHTML = `<div class="update-form">
+                <label for="editName">Nombre del producto</label>
                 <input type="text" id="editName" value="${product.name}">
+                <label for="editQuantity">Cantidad</label>
                 <input type="number" id="editQuantity" value="${product.quantity}">
+                <label for="editPrice">Precio</label>
                 <input type="number" id="editPrice" value="${product.price}">
                 <input type="hidden" id="editId" value="${product.id}">
-                <button type="submit">Actualizar producto</button>
+                <button type="submit" class="submit-update">↻Actualizar producto</button>
+                </div>
             `;
             // Evento de envío del formulario para actualizar el producto
             editForm.addEventListener('submit', (e) => {
@@ -114,7 +118,7 @@ export default class Inventory {
             totalValue += product.quantity * product.price;
         });
         // Actualizar el valor total en el DOM
-        document.getElementById('total').textContent = `Valor total del inventario: ${totalValue.toFixed(2)}`;
+        document.getElementById('total').textContent = `Valor total del inventario: ${totalValue.toFixed(2)}€`;
     } 
 
     get products() {
